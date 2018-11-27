@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         val weekOfData = MealSummaryDataService.getMealSummaryData()
 
         val foods = hashMapOf<String, Int?>() //Keys are food names, and values are their net benefit
-        var goodFood = "" //Name of good food being recommended
-        var badFood = "" //Name of bad food being recommended
 
         //Food tracked
         for(day in weekOfData) {
@@ -39,8 +37,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //Make good recommendation
-        //Make bad recommendation
+        logRecommendations(foods)
+
+        Log.e("MainActivity", "Count: " + weekOfData.size)
+    }
+
+    private fun createFoodMap(weekOfData: ArrayList<Any>) {
+
+    }
+
+    private fun logRecommendations(foods: HashMap<String, Int?>) {
+
+        var goodFood = "" //Name of good food being recommended
+        var badFood = "" //Name of bad food being recommended
+
         foods.forEach{
 
             if (goodFood == "") {
@@ -55,9 +65,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         Log.e("Main",  "Keep eating $goodFood\n Stop eating $badFood")
-
-
-
-        Log.e("MainActivity", "Count: " + weekOfData.size)
     }
 }
